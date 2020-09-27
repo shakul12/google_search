@@ -1,0 +1,157 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+<style type="text/css">
+  
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+li {
+  display: block;
+  float: right;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+button a {}
+
+.google-logo {
+  position: absolute;
+  margin: 10em 32.5em;
+}
+
+.feeling-lucky {
+  position: absolute;
+  margin: 20em 32.5em;
+  width: 400px;
+}
+
+#searchbar {
+  position: absolute;
+  top: 260px;
+  left: 375px;
+  width: 580px;
+  height: 30px;
+  border: 1px solid #cdcdcd;
+}
+
+#search_button {
+  position: absolute;
+  top: 310px;
+  left: 550px;
+  border: 1px solid #dcdcdc;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #444!important;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 8px;
+  background: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
+  border-radius: 2px;
+}
+
+#lucky_button {
+  position: absolute;
+  top: 310px;
+  left: 680px;
+  border: 1px solid #dcdcdc;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #444!important;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 8px;
+  background: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
+  border-radius: 2px;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+  margin: : 20em;
+}
+
+.footer-link {
+  margin-left: 10px;
+  color: #000;
+}
+
+.move-left {
+  float: left;
+}
+
+.move-right {
+  float: right;
+}
+
+</style>
+<nav class="header">
+  <div class="col-xs-8">
+    <ul>
+      <li><a href="#"><i class="fa fa-2x fa-user-circle-o" aria-hidden="true"></i></a></li>
+      <li><a href="#"><i class="fa fa-2x fa-bell" aria-hidden="true"></i></a></li>
+      <li><a href="#"><i class="fa fa-2x fa-bars" aria-hidden="true"></i></a></li>
+      <li><a href="#">Images</a></li>
+      <li><a href="#">Mail</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="google-logo">
+  <img src="https://developers.google.com/site-assets/images/home/google_developers_logo.png" height="100px" width="250px" alt="google-logo" title="google-logo" style="
+    padding-left: 50px;
+    border-left-width: 20px;
+">
+</div>
+<div>
+  <input type="text" name="searchBar" id="searchbar" placeholder="Search Google or Type URL">
+  <input type="button" value="Google Search" id="search_button" onclick="search()">
+
+</div>
+<input type="button" value="I'm Feeling Lucky" id="lucky_button">
+</br>
+<div class="footer">
+  <div class='container-fluid'>
+    <div class='col-md-4'>
+      <a href="#" class='footer-link move-left'>Advertising</a>
+      <a href="#" class='footer-link move-left'>Business</a>
+    </div>
+    <div class='col-md-8'>
+      <a href="#" class='footer-link move-right'>Settings</a>
+      <a href="#" class='footer-link move-right'>Terms</a>
+      <a href="#" class='footer-link move-right'>Privacy</a>
+    </div>
+  </div>
+
+</div>
+<script>
+  function search(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'http://127.0.0.1:5000/search');
+    xhr.setRequestHeader("content-type", "application/json");
+    var data = JSON.stringify({"search":document.getElementById("searchbar").value});
+    xhr.send(data);
+    window.open('http://127.0.0.1:5000/out')
+  }
+
+</script>
